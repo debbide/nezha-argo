@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# 各变量默认�?GH_PROXY='https://ghproxy.lvedong.eu.org/'
+# 鍚勫彉閲忛粯璁ゅ€?GH_PROXY='https://ghproxy.lvedong.eu.org/'
 WORK_DIR='/opt/nezha/dashboard'
 TEMP_DIR='/tmp/nezha'
 START_PORT='5000'
@@ -10,106 +10,106 @@ trap "rm -rf $TEMP_DIR; echo -e '\n' ;exit" INT QUIT TERM EXIT
 
 mkdir -p $TEMP_DIR
 
-E[0]="Language:\n 1. English (default) \n 2. 简体中�?
+E[0]="Language:\n 1. English (default) \n 2. 绠€浣撲腑鏂?
 C[0]="${E[0]}"
 E[1]="Nezha Dashboard v0,v1 Combined for VPS (https://github.com/debbide/nezha-argo).\n  - Modified from Argo-Nezha-Service-Container of fscarmen \n  - Goodbye docker!\n  - Goodbye port mapping!\n  - Goodbye IPv4/IPv6 Compatibility!"
-C[1]="哪吒面板 VPS 兼容v0、v1�?(https://github.com/debbide/nezha-argo)\n  - 修改自大�?fscarmen �?Argo-Nezha-Service-Container \n  - 告别 Docker！\n  - 告别端口映射！\n  - 告别 IPv4/IPv6 兼容性！"
+C[1]="鍝悞闈㈡澘 VPS 鍏煎v0銆乿1鐗?(https://github.com/debbide/nezha-argo)\n  - 淇敼鑷ぇ浣?fscarmen 鐨?Argo-Nezha-Service-Container \n  - 鍛婂埆 Docker锛乗n  - 鍛婂埆绔彛鏄犲皠锛乗n  - 鍛婂埆 IPv4/IPv6 鍏煎鎬э紒"
 E[2]="Curren architecture \$(uname -m) is not supported. Feedback: [https://github.com/debbide/nezha-argo/issues]"
-C[2]="当前架构 \$(uname -m) 暂不支持,问题反馈:[https://github.com/debbide/nezha-argo/issues]"
+C[2]="褰撳墠鏋舵瀯 \$(uname -m) 鏆備笉鏀寔,闂鍙嶉:[https://github.com/debbide/nezha-argo/issues]"
 E[3]="Input errors up to 5 times.The script is aborted."
-C[3]="输入错误�?�?脚本退�?
+C[3]="杈撳叆閿欒杈?娆?鑴氭湰閫€鍑?
 E[4]="The script must be run as root, you can enter sudo -i and then download and run again. Feedback:[https://github.com/debbide/nezha-argo/issues]"
-C[4]="必须以root方式运行脚本，可以输�?sudo -i 后重新下载运行，问题反馈:[https://github.com/debbide/nezha-argo/issues]"
+C[4]="蹇呴』浠oot鏂瑰紡杩愯鑴氭湰锛屽彲浠ヨ緭鍏?sudo -i 鍚庨噸鏂颁笅杞借繍琛岋紝闂鍙嶉:[https://github.com/debbide/nezha-argo/issues]"
 E[5]="The script supports Debian, Ubuntu, CentOS, Alpine or Arch systems only. Feedback: [https://github.com/debbide/nezha-argo/issues]"
-C[5]="本脚本只支持 Debian、Ubuntu、CentOS、Alpine �?Arch 系统,问题反馈:[https://github.com/debbide/nezha-argo/issues]"
+C[5]="鏈剼鏈彧鏀寔 Debian銆乁buntu銆丆entOS銆丄lpine 鎴?Arch 绯荤粺,闂鍙嶉:[https://github.com/debbide/nezha-argo/issues]"
 E[6]="Curren operating system is \$SYS.\\\n The system lower than \$SYSTEM \${MAJOR[int]} is not supported. Feedback: [https://github.com/debbide/nezha-argo/issues]"
-C[6]="当前操作�?\$SYS\\\n 不支�?\$SYSTEM \${MAJOR[int]} 以下系统,问题反馈:[https://github.com/debbide/nezha-argo/issues]"
+C[6]="褰撳墠鎿嶄綔鏄?\$SYS\\\n 涓嶆敮鎸?\$SYSTEM \${MAJOR[int]} 浠ヤ笅绯荤粺,闂鍙嶉:[https://github.com/debbide/nezha-argo/issues]"
 E[7]="Install dependence-list:"
-C[7]="安装依赖列表:"
+C[7]="瀹夎渚濊禆鍒楄〃:"
 E[8]="All dependencies already exist and do not need to be installed additionally."
-C[8]="所有依赖已存在，不需要额外安�?
+C[8]="鎵€鏈変緷璧栧凡瀛樺湪锛屼笉闇€瑕侀澶栧畨瑁?
 E[9]="Please enter Github login name as the administrator:"
-C[9]="请输�?Github 登录名作为管理员:"
+C[9]="璇疯緭鍏?Github 鐧诲綍鍚嶄綔涓虹鐞嗗憳:"
 E[10]="About the GitHub Oauth2 application: create it at https://github.com/settings/developers, no review required, and fill in the http(s)://domain_or_IP/oauth2/callback \n Please enter the Client ID of the Oauth2 application:"
-C[10]="关于 GitHub Oauth2 应用：在 https://github.com/settings/developers 创建，无需审核，Callback �?http(s)://域名或IP/oauth2/callback \n 请输�?Oauth2 应用�?Client ID:"
+C[10]="鍏充簬 GitHub Oauth2 搴旂敤锛氬湪 https://github.com/settings/developers 鍒涘缓锛屾棤闇€瀹℃牳锛孋allback 濉?http(s)://鍩熷悕鎴朓P/oauth2/callback \n 璇疯緭鍏?Oauth2 搴旂敤鐨?Client ID:"
 E[11]="Please enter the Client Secret of the Oauth2 application:"
-C[11]="请输�?Oauth2 应用�?Client Secret:"
+C[11]="璇疯緭鍏?Oauth2 搴旂敤鐨?Client Secret:"
 E[12]="Please enter the Argo Json or Token (You can easily get the json at: https://fscarmen.cloudflare.now.cc):"
-C[12]="请输�?Argo Json 或�?Token (用户通过以下网站轻松获取 json: https://fscarmen.cloudflare.now.cc):"
+C[12]="璇疯緭鍏?Argo Json 鎴栬€?Token (鐢ㄦ埛閫氳繃浠ヤ笅缃戠珯杞绘澗鑾峰彇 json: https://fscarmen.cloudflare.now.cc):"
 E[13]="Please enter the Argo domain name:"
-C[13]="请输�?Argo 域名:"
+C[13]="璇疯緭鍏?Argo 鍩熷悕:"
 E[14]="If you need to back up your database to Github regularly, please enter the name of your private Github repository, otherwise leave it blank:"
-C[14]="如需要定时把数据库备份到 Github，请输入 Github 私库名，否则请留�?"
+C[14]="濡傞渶瑕佸畾鏃舵妸鏁版嵁搴撳浠藉埌 Github锛岃杈撳叆 Github 绉佸簱鍚嶏紝鍚﹀垯璇风暀绌?"
 E[15]="Please enter the Github username for the database \(default \$GH_USER\):"
-C[15]="请输入数据库�?Github 用户�?\(默认 \$GH_USER\):"
+C[15]="璇疯緭鍏ユ暟鎹簱鐨?Github 鐢ㄦ埛鍚?\(榛樿 \$GH_USER\):"
 E[16]="Please enter the Github Email for the database:"
-C[16]="请输入数据库�?Github Email:"
+C[16]="璇疯緭鍏ユ暟鎹簱鐨?Github Email:"
 E[17]="Please enter a Github PAT:"
-C[17]="请输�?Github PAT:"
+C[17]="璇疯緭鍏?Github PAT:"
 E[18]="There are variables that are not set. Installation aborted. Feedback: [https://github.com/debbide/nezha-argo/issues]"
-C[18]="参数不齐，安装中止，问题反馈:[https://github.com/debbide/nezha-argo/issues]"
+C[18]="鍙傛暟涓嶉綈锛屽畨瑁呬腑姝紝闂鍙嶉:[https://github.com/debbide/nezha-argo/issues]"
 E[19]="Exit"
-C[19]="退�?
+C[19]="閫€鍑?
 E[20]="Close Nezha dashboard"
-C[20]="关闭哪吒面板"
+C[20]="鍏抽棴鍝悞闈㈡澘"
 E[21]="Open Nezha dashboard"
-C[21]="开启哪吒面�?
+C[21]="寮€鍚摢鍚掗潰鏉?
 E[22]="Argo authentication message does not match the rules, neither Token nor Json, script exits. Feedback:[https://github.com/debbide/nezha-argo/issues]"
-C[22]="Argo 认证信息不符合规则，既不�?Token，也是不�?Json，脚本退出，问题反馈:[https://github.com/debbide/nezha-argo/issues]"
+C[22]="Argo 璁よ瘉淇℃伅涓嶇鍚堣鍒欙紝鏃笉鏄?Token锛屼篃鏄笉鏄?Json锛岃剼鏈€€鍑猴紝闂鍙嶉:[https://github.com/debbide/nezha-argo/issues]"
 E[23]="Please enter the correct number"
-C[23]="请输入正确数�?
+C[23]="璇疯緭鍏ユ纭暟瀛?
 E[24]="Choose:"
-C[24]="请选择:"
+C[24]="璇烽€夋嫨:"
 E[25]="Downloading. Please wait a minute."
-C[25]="下载�? 请稍�?
+C[25]="涓嬭浇涓? 璇风◢绛?
 E[26]="Not install"
-C[26]="未安�?
+C[26]="鏈畨瑁?
 E[27]="close"
-C[27]="关闭"
+C[27]="鍏抽棴"
 E[28]="open"
-C[28]="开�?
+C[28]="寮€鍚?
 E[29]="Uninstall Nezha dashboard"
-C[29]="卸载哪吒面板"
+C[29]="鍗歌浇鍝悞闈㈡澘"
 E[30]="Install Kiritocyz's VPS with Argo v0,v1 Combined version (https://github.com/debbide/nezha-argo)"
-C[30]="安装 Kiritocyz �?VPS argo 带远程备份的v0、v1兼容�?(https://github.com/debbide/nezha-argo)"
+C[30]="瀹夎 Kiritocyz 鐨?VPS argo 甯﹁繙绋嬪浠界殑v0銆乿1鍏煎鐗?(https://github.com/debbide/nezha-argo)"
 E[31]="successful"
-C[31]="成功"
+C[31]="鎴愬姛"
 E[32]="failed"
-C[32]="失败"
+C[32]="澶辫触"
 E[33]="Could not find \$NEED_PORTS free ports, script exits. Feedback:[https://github.com/debbide/nezha-argo/issues]"
-C[33]="找不�?\$NEED_PORTS 个可用端口，脚本退出，问题反馈:[https://github.com/debbide/nezha-argo/issues]"
+C[33]="鎵句笉鍒?\$NEED_PORTS 涓彲鐢ㄧ鍙ｏ紝鑴氭湰閫€鍑猴紝闂鍙嶉:[https://github.com/debbide/nezha-argo/issues]"
 E[34]="Important!!! Please turn on gRPC at the Network of the relevant Cloudflare domain, otherwise the client data will not work! See the tutorial for details: [https://github.com/debbide/nezha-argo]"
-C[34]="重要!!! 请到 Cloudflare 相关域名�?Network 处打开 gRPC 功能，否则客户端数据不�?具体可参照教�? [https://github.com/debbide/nezha-argo]"
+C[34]="閲嶈!!! 璇峰埌 Cloudflare 鐩稿叧鍩熷悕鐨?Network 澶勬墦寮€ gRPC 鍔熻兘锛屽惁鍒欏鎴风鏁版嵁涓嶉€?鍏蜂綋鍙弬鐓ф暀绋? [https://github.com/debbide/nezha-argo]"
 E[35]="Please add two Public hostnames to Cloudnflare Tunnel: \\\n 1. ------------------------ \\\n Public hostname: \$ARGO_DOMAIN \\\n Path: proto.NezhaService \\\n Type: HTTPS \\\n URL: localhost:\$GRPC_PROXY_PORT \\\n Additional application settings ---\> TLS: Enable [No TLS Verify] and [HTTP2 connection] \\\n\\\n 2. ------------------------ \\\n Public hostname: \$ARGO_DOMAIN \\\n Type: HTTP \\\n URL: localhost:\$WEB_PORT"
-C[35]="请在 Cloudnflare Tunnel 里增加两�?Public hostnames: \\\n 1. ------------------------ \\\n Public hostname: \$ARGO_DOMAIN \\\n Path: proto.NezhaService \\\n Type: HTTPS \\\n URL: localhost:\$GRPC_PROXY_PORT \\\n Additional application settings ---\> TLS: 开�?[No TLS Verify] �?[HTTP2 connection] 这两处功�?\\\n\\\n 2. ------------------------ \\\n Public hostname: \$ARGO_DOMAIN \\\n Type: HTTP \\\n URL: localhost:\$WEB_PORT"
+C[35]="璇峰湪 Cloudnflare Tunnel 閲屽鍔犱袱涓?Public hostnames: \\\n 1. ------------------------ \\\n Public hostname: \$ARGO_DOMAIN \\\n Path: proto.NezhaService \\\n Type: HTTPS \\\n URL: localhost:\$GRPC_PROXY_PORT \\\n Additional application settings ---\> TLS: 寮€鍚?[No TLS Verify] 鍜?[HTTP2 connection] 杩欎袱澶勫姛鑳?\\\n\\\n 2. ------------------------ \\\n Public hostname: \$ARGO_DOMAIN \\\n Type: HTTP \\\n URL: localhost:\$WEB_PORT"
 E[36]="Downloading the \${FAILED[*]} failed. Installation aborted. Feedback: [https://github.com/debbide/nezha-argo/issues]"
-C[36]="下载 \${FAILED[*]} 失败，安装中止，问题反馈:[https://github.com/debbide/nezha-argo/issues]"
+C[36]="涓嬭浇 \${FAILED[*]} 澶辫触锛屽畨瑁呬腑姝紝闂鍙嶉:[https://github.com/debbide/nezha-argo/issues]"
 E[37]="Install Nezha's official VPS or docker version (https://github.com/naiba/nezha)"
-C[37]="安装哪吒官方 VPS �?Docker 版本 (https://github.com/naiba/nezha)"
+C[37]="瀹夎鍝悞瀹樻柟 VPS 鎴?Docker 鐗堟湰 (https://github.com/naiba/nezha)"
 E[38]="Please choose gRPC proxy mode(v1 use Caddy):\n 1. Caddy (default)\n 2. Nginx\n 3. gRPCwebProxy"
-C[38]="请选择 gRPC 代理模式(v1请使用Caddy):\n 1. Caddy (默认)\n 2. Nginx\n 3. gRPCwebProxy"
+C[38]="璇烽€夋嫨 gRPC 浠ｇ悊妯″紡(v1璇蜂娇鐢–addy):\n 1. Caddy (榛樿)\n 2. Nginx\n 3. gRPCwebProxy"
 E[39]="To uninstall Nginx press [y], it is not uninstalled by default:"
-C[39]="如要卸载 Nginx 请按 [y]，默认不卸载:"
+C[39]="濡傝鍗歌浇 Nginx 璇锋寜 [y]锛岄粯璁や笉鍗歌浇:"
 E[40]="Please enter the specified Nezha dashboard version, it will be fixed in this version, if you skip it, the latest v1 will be used. :"
-C[40]="请填入指定面板版�?后续将固定在该版本，跳过则使用v1最新版"
+C[40]="璇峰～鍏ユ寚瀹氶潰鏉跨増鏈?鍚庣画灏嗗浐瀹氬湪璇ョ増鏈紝璺宠繃鍒欎娇鐢╲1鏈€鏂扮増"
 E[41]="Default: enable automatic online synchronization of the latest backup.sh and restore.sh scripts. If you do not want this feature, enter [n]:"
-C[41]="默认开启自动在线同步最�?backup.sh �?restore.sh 脚本的功能，如不需要该功能，请输入 [n]:"
+C[41]="榛樿寮€鍚嚜鍔ㄥ湪绾垮悓姝ユ渶鏂?backup.sh 鍜?restore.sh 鑴氭湰鐨勫姛鑳斤紝濡備笉闇€瑕佽鍔熻兘锛岃杈撳叆 [n]:"
 E[42]="The DASHBOARD_VERSION variable should be in a format like v0.00.00 or left blank. Please check."
-C[42]="变量 DASHBOARD_VERSION 必须�?v0.00.00 的格式或者留空，请检�?
+C[42]="鍙橀噺 DASHBOARD_VERSION 蹇呴』浠?v0.00.00 鐨勬牸寮忔垨鑰呯暀绌猴紝璇锋鏌?
 E[43]="Please enter the required backup time (default is Cron expression: 0 4 * * *):"
-C[43]="请输入需要的备份时间(默认为Cron表达�? 0 4 * * *):"
+C[43]="璇疯緭鍏ラ渶瑕佺殑澶囦唤鏃堕棿(榛樿涓篊ron琛ㄨ揪寮? 0 4 * * *):"
 E[44]="Please enter the number of backups to be retained in the backup repository (default is 5):"
-C[44]="请输入备份仓库里所保留的备份数�?默认�?5):"
+C[44]="璇疯緭鍏ュ浠戒粨搴撻噷鎵€淇濈暀鐨勫浠芥暟閲?榛樿涓?5):"
 
-# 自定义字体彩色，read 函数
-warning() { echo -e "\033[31m\033[01m$*\033[0m"; }  # 红色
-error() { echo -e "\033[31m\033[01m$*\033[0m" && exit 1; } # 红色
-info() { echo -e "\033[32m\033[01m$*\033[0m"; }   # 绿色
-hint() { echo -e "\033[33m\033[01m$*\033[0m"; }   # 黄色
+# 鑷畾涔夊瓧浣撳僵鑹诧紝read 鍑芥暟
+warning() { echo -e "\033[31m\033[01m$*\033[0m"; }  # 绾㈣壊
+error() { echo -e "\033[31m\033[01m$*\033[0m" && exit 1; } # 绾㈣壊
+info() { echo -e "\033[32m\033[01m$*\033[0m"; }   # 缁胯壊
+hint() { echo -e "\033[33m\033[01m$*\033[0m"; }   # 榛勮壊
 reading() { read -rp "$(info "$1")" "$2"; }
 text() { grep -q '\$' <<< "${E[$*]}" && eval echo "\$(eval echo "\${${L}[$*]}")" || eval echo "\${${L}[$*]}"; }
 
-# 选择中英语言
+# 閫夋嫨涓嫳璇█
 select_language() {
   if [ -z "$L" ]; then
     case $(cat $WORK_DIR/language 2>&1) in
@@ -126,7 +126,7 @@ check_root() {
 }
 
 check_arch() {
-  # 判断处理器架�?  case "$(uname -m)" in
+  # 鍒ゆ柇澶勭悊鍣ㄦ灦鏋?  case "$(uname -m)" in
     aarch64|arm64 )
       ARCH=arm64
       ;;
@@ -140,7 +140,7 @@ check_arch() {
   esac
 }
 
-# 检查可�?port 函数，要�?�?check_port() {
+# 妫€鏌ュ彲鐢?port 鍑芥暟锛岃姹?涓?check_port() {
   until [ "$START_PORT" -gt 65530 ]; do
     if [ "$SYSTEM" = 'Alpine' ]; then
       netstat -an | awk '/:[0-9]+/{print $4}' | awk -F ":" '{print $NF}' | grep -q $START_PORT || FREE_PORT+=("$START_PORT")
@@ -161,7 +161,7 @@ check_arch() {
   fi
 }
 
-# 查安装及运行状态，下标0: argo，下�?: app�?状态码: 0 未安装， 1 已安装未运行�?2 运行�?check_install() {
+# 鏌ュ畨瑁呭強杩愯鐘舵€侊紝涓嬫爣0: argo锛屼笅鏍?: app锛?鐘舵€佺爜: 0 鏈畨瑁咃紝 1 宸插畨瑁呮湭杩愯锛?2 杩愯涓?check_install() {
   STATUS=$(text 26) && [ -s /etc/systemd/system/nezha-dashboard.service ] && STATUS=$(text 27) && [ "$(systemctl is-active nezha-dashboard)" = 'active' ] && STATUS=$(text 28)
 
   if [ "$STATUS" = "$(text 26)" ]; then
@@ -169,7 +169,7 @@ check_arch() {
   fi
 }
 
-# 为了适配 alpine，定�?cmd_systemctl 的函�?cmd_systemctl() {
+# 涓轰簡閫傞厤 alpine锛屽畾涔?cmd_systemctl 鐨勫嚱鏁?cmd_systemctl() {
   local ENABLE_DISABLE=$1
   if [ "$ENABLE_DISABLE" = 'enable' ]; then
     if [ "$SYSTEM" = 'Alpine' ]; then
@@ -220,18 +220,18 @@ check_system_info() {
   for int in "${!REGEX[@]}"; do [[ $(tr 'A-Z' 'a-z' <<< "$SYS") =~ ${REGEX[int]} ]] && SYSTEM="${RELEASE[int]}" && break; done
   [ -z "$SYSTEM" ] && error " $(text 5) "
 
-  # 先排�?EXCLUDE 里包括的特定系统，其他系统需要作大发行版本的比较
+  # 鍏堟帓闄?EXCLUDE 閲屽寘鎷殑鐗瑰畾绯荤粺锛屽叾浠栫郴缁熼渶瑕佷綔澶у彂琛岀増鏈殑姣旇緝
   for ex in "${EXCLUDE[@]}"; do [[ ! $(tr 'A-Z' 'a-z' <<< "$SYS")  =~ $ex ]]; done &&
   [[ "$(echo "$SYS" | sed "s/[^0-9.]//g" | cut -d. -f1)" -lt "${MAJOR[int]}" ]] && error " $(text 6) "
 }
 
-# 检测是否需要启�?Github CDN，如能直接连通，则不使用
+# 妫€娴嬫槸鍚﹂渶瑕佸惎鐢?Github CDN锛屽鑳界洿鎺ヨ繛閫氾紝鍒欎笉浣跨敤
 check_cdn() {
   [ -n "$GH_PROXY" ] && wget --server-response --quiet --output-document=/dev/null --no-check-certificate --tries=2 --timeout=3 https://raw.githubusercontent.com/debbide/nezha-argo/main/README.md >/dev/null 2>&1 && unset GH_PROXY
 }
 
 check_dependencies() {
-  # 如果�?Alpine，先升级 wget ，安�?systemctl-py �?  if [ "$SYSTEM" = 'Alpine' ]; then
+  # 濡傛灉鏄?Alpine锛屽厛鍗囩骇 wget 锛屽畨瑁?systemctl-py 鐗?  if [ "$SYSTEM" = 'Alpine' ]; then
     CHECK_WGET=$(wget 2>&1 | head -n 1)
     grep -qi 'busybox' <<< "$CHECK_WGET" && ${PACKAGE_INSTALL[int]} wget >/dev/null 2>&1
 
@@ -248,8 +248,8 @@ check_dependencies() {
 
     [ ! -x "$(type -p systemctl)" ] && wget ${GH_PROXY}https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /bin/systemctl && chmod a+x /bin/systemctl
 
-  # �?Alpine 系统安装的依�?  else
-    # 检�?Linux 系统的依赖，升级库并重新安装依赖
+  # 闈?Alpine 绯荤粺瀹夎鐨勪緷璧?  else
+    # 妫€娴?Linux 绯荤粺鐨勪緷璧栵紝鍗囩骇搴撳苟閲嶆柊瀹夎渚濊禆
     DEPS_CHECK=("wget" "systemctl" "ss" "git" "timedatectl" "openssl" "unzip")
     DEPS_INSTALL=("wget" "systemctl" "iproute2" "git" "timedatectl" "openssl" "unzip")
     for ((g=0; g<${#DEPS_CHECK[@]}; g++)); do [ ! -x "$(type -p ${DEPS_CHECK[g]})" ] && [[ ! "${DEPS[@]}" =~ "${DEPS_INSTALL[g]}" ]] && DEPS+=(${DEPS_INSTALL[g]}); done
@@ -263,7 +263,7 @@ check_dependencies() {
   fi
 }
 
-# 申请自签证书
+# 鐢宠鑷璇佷功
 certificate() {
   openssl genrsa -out ${TEMP_DIR}/nezha.key 2048 >/dev/null 2>&1
   openssl req -new -subj "/CN=$ARGO_DOMAIN" -key ${TEMP_DIR}/nezha.key -out ${TEMP_DIR}/nezha.csr >/dev/null 2>&1
@@ -271,7 +271,7 @@ certificate() {
 }
 
 dashboard_variables() {
-# 询问版本自动后台下载
+# 璇㈤棶鐗堟湰鑷姩鍚庡彴涓嬭浇
   [ -z "$DASHBOARD_VERSION" ] && reading "\n (1/14) $(text 40) " DASHBOARD_VERSION
   if [ -z "$DASHBOARD_VERSION" ]; then
     { wget -qO $TEMP_DIR/dashboard.zip ${GH_PROXY}https://github.com/nezhahq/nezha/releases/latest/download/dashboard-linux-$ARCH.zip >/dev/null 2>&1; }&
@@ -300,12 +300,12 @@ dashboard_variables() {
     ((a--)) || true
   done
 
-  # 处理可能输入的错误，去掉开头和结尾的空格，去掉最后的 :
+  # 澶勭悊鍙兘杈撳叆鐨勯敊璇紝鍘绘帀寮€澶村拰缁撳熬鐨勭┖鏍硷紝鍘绘帀鏈€鍚庣殑 :
   [ -z "$ARGO_DOMAIN" ] && reading "\n (6/14) $(text 13) " ARGO_DOMAIN
   ARGO_DOMAIN=$(sed 's/[ ]*//g; s/:[ ]*//' <<< "$ARGO_DOMAIN")
   { certificate; }&
 
-  # # 用户选择使用 gRPC 反代方式: Nginx / Caddy / grpcwebproxy，默认为 Caddy
+  # # 鐢ㄦ埛閫夋嫨浣跨敤 gRPC 鍙嶄唬鏂瑰紡: Nginx / Caddy / grpcwebproxy锛岄粯璁や负 Caddy
   [ -z "$REVERSE_PROXY_MODE" ] && info "\n (7/14) $(text 38) \n" && reading " $(text 24) " REVERSE_PROXY_CHOOSE
   case "$REVERSE_PROXY_CHOOSE" in
     2 ) REVERSE_PROXY_MODE=nginx ;;
@@ -338,7 +338,7 @@ dashboard_variables() {
   grep -qiw 'n' <<< "$AUTO_RENEW_OR_NOT" && IS_AUTO_RENEW=#
 }
 
-# 安装面板
+# 瀹夎闈㈡澘
 install() {
   dashboard_variables
 
@@ -346,7 +346,7 @@ install() {
 
   hint "\n $(text 25) "
 
-  # 根据 caddy，grpcwebproxy �?nginx 作处�?  if  [ "$REVERSE_PROXY_MODE" = 'caddy' ]; then
+  # 鏍规嵁 caddy锛実rpcwebproxy 鎴?nginx 浣滃鐞?  if  [ "$REVERSE_PROXY_MODE" = 'caddy' ]; then
     local CADDY_LATEST=$(wget -qO- "${GH_PROXY}https://api.github.com/repos/caddyserver/caddy/releases/latest" | awk -F [v\"] '/"tag_name"/{print $5}' || echo '2.7.6')
     wget -c ${GH_PROXY}https://github.com/caddyserver/caddy/releases/download/v${CADDY_LATEST}/caddy_${CADDY_LATEST}_linux_${ARCH}.tar.gz -qO- | tar xz -C $TEMP_DIR caddy >/dev/null 2>&1
     GRPC_PROXY_RUN="$WORK_DIR/caddy run --config $WORK_DIR/Caddyfile --watch"
@@ -417,14 +417,14 @@ EOF
 
   wait
 
-  # unzip 解压面板主应�?  if [ "$STATUS" = "$(text 26)" ]; then
+  # unzip 瑙ｅ帇闈㈡澘涓诲簲鐢?  if [ "$STATUS" = "$(text 26)" ]; then
     unzip -o -q $TEMP_DIR/dashboard.zip -d $TEMP_DIR 2>&1
     [ -d /tmp/dist ] && mv $TEMP_DIR/dist/dashboard-linux-$ARCH $TEMP_DIR/dashboard-linux-$ARCH && rm -rf $TEMP_DIR/dist
     chmod +x $TEMP_DIR/dashboard-linux-$ARCH 2>&1
     mv -f $TEMP_DIR/dashboard-linux-$ARCH $TEMP_DIR/app >/dev/null 2>&1
   fi
 
-  # 检测下载的文件或文件夹是否�?  for f in ${TEMP_DIR}/{cloudflared,app,nezha.key,nezha.csr,nezha.pem}; do
+  # 妫€娴嬩笅杞界殑鏂囦欢鎴栨枃浠跺す鏄惁榻?  for f in ${TEMP_DIR}/{cloudflared,app,nezha.key,nezha.csr,nezha.pem}; do
     [ ! -s "$f" ] && FAILED+=("${f//${TEMP_DIR}\//}")
   done
   case "$REVERSE_PROXY_MODE" in
@@ -433,7 +433,7 @@ EOF
   esac
   [ "${#FAILED[@]}" -gt 0 ] && error "\n $(text 36) "
 
-  # 从临时文件夹复制已下载的所有到工作文件�?  [ ! -d ${WORK_DIR}/data ] && mkdir -p ${WORK_DIR}/data
+  # 浠庝复鏃舵枃浠跺す澶嶅埗宸蹭笅杞界殑鎵€鏈夊埌宸ヤ綔鏂囦欢澶?  [ ! -d ${WORK_DIR}/data ] && mkdir -p ${WORK_DIR}/data
   cp -r $TEMP_DIR/{app,cloudflared,nezha.*} $WORK_DIR
   case "$REVERSE_PROXY_MODE" in
     caddy ) cp -f $TEMP_DIR/caddy $TEMP_DIR/Caddyfile $WORK_DIR ;;
@@ -442,7 +442,7 @@ EOF
   esac
   rm -rf $TEMP_DIR
 
-  # 根据参数生成哪吒服务端配置文�?  if [ "$L" = 'C' ]; then
+  # 鏍规嵁鍙傛暟鐢熸垚鍝悞鏈嶅姟绔厤缃枃浠?  if [ "$L" = 'C' ]; then
     DASHBOARD_LANGUAGE='zh-CN'
     if [ "$(date | awk '{print $(NF-1)}')" != 'CST' ]; then
       if [ "$SYSTEM" = 'Alpine' ]; then
@@ -467,13 +467,13 @@ GRPCHost: $ARGO_DOMAIN
 ProxyGRPCPort: 443
 TLS: true
 Oauth2:
-  Type: "github" #Oauth2 登录接入类型，github/gitlab/jihulab/gitee/gitea
-  Admin: "$GH_USER" #管理员列表，半角逗号隔开
-  ClientID: "$GH_CLIENTID" # �?https://github.com/settings/developers 创建，无需审核 Callback �?http(s)://域名或IP/oauth2/callback
+  Type: "github" #Oauth2 鐧诲綍鎺ュ叆绫诲瀷锛実ithub/gitlab/jihulab/gitee/gitea
+  Admin: "$GH_USER" #绠＄悊鍛樺垪琛紝鍗婅閫楀彿闅斿紑
+  ClientID: "$GH_CLIENTID" # 鍦?https://github.com/settings/developers 鍒涘缓锛屾棤闇€瀹℃牳 Callback 濉?http(s)://鍩熷悕鎴朓P/oauth2/callback
   ClientSecret: "$GH_CLIENTSECRET"
-  Endpoint: "" # 如gitea自建需要设�?Site:
+  Endpoint: "" # 濡俫itea鑷缓闇€瑕佽缃?Site:
   Brand: "Nezha Probe"
-  CookieName: "nezha-dashboard" #浏览�?Cookie 字段名，可不�?  Theme: "default"
+  CookieName: "nezha-dashboard" #娴忚鍣?Cookie 瀛楁鍚嶏紝鍙笉鏀?  Theme: "default"
 EOF
   else
     LOCAL_TOKEN=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 32)
@@ -503,8 +503,8 @@ EOF
     fi
   fi
 
-  # 判断 ARGO_AUTH �?json 还是 token
-  # 如为 json 将生�?argo.json �?argo.yml 文件
+  # 鍒ゆ柇 ARGO_AUTH 涓?json 杩樻槸 token
+  # 濡備负 json 灏嗙敓鎴?argo.json 鍜?argo.yml 鏂囦欢
   if [ -n "$ARGO_JSON" ]; then
     ARGO_RUN="${WORK_DIR}/cloudflared tunnel --edge-ip-version auto --config ${WORK_DIR}/argo.yml run"
 
@@ -527,11 +527,11 @@ ingress:
   - service: http_status:404
 EOF
 
-  # 如为 token �?  elif [ -n "$ARGO_TOKEN" ]; then
+  # 濡備负 token 鏃?  elif [ -n "$ARGO_TOKEN" ]; then
     ARGO_RUN="${WORK_DIR}/cloudflared tunnel --edge-ip-version auto --protocol http2 run --token ${ARGO_TOKEN}"
   fi
 
-  # 生成应用启动停止脚本及进程守�?  cat > ${WORK_DIR}/run.sh << EOF
+  # 鐢熸垚搴旂敤鍚姩鍋滄鑴氭湰鍙婅繘绋嬪畧鎶?  cat > ${WORK_DIR}/run.sh << EOF
 #!/usr/bin/env bash
 SYSTEM=$SYSTEM
 
@@ -568,11 +568,11 @@ RestartSec=5s
 WantedBy=multi-user.target
 EOF
 
-  # 生成 backup.sh 文件的步�? - 设置环境变量
+  # 鐢熸垚 backup.sh 鏂囦欢鐨勬楠? - 璁剧疆鐜鍙橀噺
   cat > ${WORK_DIR}/backup.sh << EOF
 #!/usr/bin/env bash
 
-# backup.sh 传参 a 自动还原�?传参 m 手动还原�?传参 f 强制更新面板 app 文件�?cloudflared 文件，并备份数据至成备份�?
+# backup.sh 浼犲弬 a 鑷姩杩樺師锛?浼犲弬 m 鎵嬪姩杩樺師锛?浼犲弬 f 寮哄埗鏇存柊闈㈡澘 app 鏂囦欢鍙?cloudflared 鏂囦欢锛屽苟澶囦唤鏁版嵁鑷虫垚澶囦唤搴?
 GH_PROXY=$GH_PROXY
 GH_PAT=$GH_PAT
 GH_BACKUP_USER=$GH_BACKUP_USER
@@ -588,17 +588,17 @@ DASHBOARD_VERSION=$DASHBOARD_VERSION
 ########
 EOF
 
-  # 生成 backup.sh 文件的步�? - 在线获取 template/bakcup.sh 模板生成完整 backup.sh 文件
+  # 鐢熸垚 backup.sh 鏂囦欢鐨勬楠? - 鍦ㄧ嚎鑾峰彇 template/bakcup.sh 妯℃澘鐢熸垚瀹屾暣 backup.sh 鏂囦欢
   wget -qO- ${GH_PROXY}https://raw.githubusercontent.com/debbide/nezha-argo/main/template/backup.sh | sed '1,/^########/d' >> ${WORK_DIR}/backup.sh
 
   if [[ -n "$GH_BACKUP_USER" && -n "$GH_REPO" && -n "$GH_PAT" ]]; then
-    # 生成还原数据脚本
+    # 鐢熸垚杩樺師鏁版嵁鑴氭湰
     touch ${WORK_DIR}/dbfile
-    # 生成 restore.sh 文件的步�? - 设置环境变量
+    # 鐢熸垚 restore.sh 鏂囦欢鐨勬楠? - 璁剧疆鐜鍙橀噺
     cat > ${WORK_DIR}/restore.sh << EOF
 #!/usr/bin/env bash
 
-# restore.sh 传参 a 自动还原 README.md 记录的文件，当本地与远程记录文件一样时不还原； 传参 f 不管本地记录文件，强制还原成备份库里 README.md 记录的文件； 传参 dashboard-***.tar.gz 还原成备份库里的该文件；不带参数则要求选择备份库里的文件名
+# restore.sh 浼犲弬 a 鑷姩杩樺師 README.md 璁板綍鐨勬枃浠讹紝褰撴湰鍦颁笌杩滅▼璁板綍鏂囦欢涓€鏍锋椂涓嶈繕鍘燂紱 浼犲弬 f 涓嶇鏈湴璁板綍鏂囦欢锛屽己鍒惰繕鍘熸垚澶囦唤搴撻噷 README.md 璁板綍鐨勬枃浠讹紱 浼犲弬 dashboard-***.tar.gz 杩樺師鎴愬浠藉簱閲岀殑璇ユ枃浠讹紱涓嶅甫鍙傛暟鍒欒姹傞€夋嫨澶囦唤搴撻噷鐨勬枃浠跺悕
 
 GH_PROXY=$GH_PROXY
 GH_PAT=$GH_PAT
@@ -612,11 +612,11 @@ IS_DOCKER=0
 
 ########
 EOF
-    # 生成 restore.sh 文件的步�? - 在线获取 template/restore.sh 模板生成完整 restore.sh 文件
+    # 鐢熸垚 restore.sh 鏂囦欢鐨勬楠? - 鍦ㄧ嚎鑾峰彇 template/restore.sh 妯℃澘鐢熸垚瀹屾暣 restore.sh 鏂囦欢
     wget -qO- ${GH_PROXY}https://raw.githubusercontent.com/debbide/nezha-argo/main/template/restore.sh | sed '1,/^########/d' >> ${WORK_DIR}/restore.sh
   fi
 
-  # 生成 renew.sh 文件的步�? - 设置环境变量
+  # 鐢熸垚 renew.sh 鏂囦欢鐨勬楠? - 璁剧疆鐜鍙橀噺
   cat > ${WORK_DIR}/renew.sh << EOF
 #!/usr/bin/env bash
 
@@ -627,10 +627,10 @@ TEMP_DIR=/tmp/renew
 ########
 EOF
 
-  # 生成 renew.sh 文件的步�? - 在线获取 template/renew.sh 模板生成完整 renew.sh 文件
+  # 鐢熸垚 renew.sh 鏂囦欢鐨勬楠? - 鍦ㄧ嚎鑾峰彇 template/renew.sh 妯℃澘鐢熸垚瀹屾暣 renew.sh 鏂囦欢
   wget -qO- ${GH_PROXY}https://raw.githubusercontent.com/debbide/nezha-argo/main/template/renew.sh | sed '1,/^########/d' >> ${WORK_DIR}/renew.sh
 
-  # 生成定时任务: 1.每天北京时间 3:30:00 更新备份和还原文件，2.每天北京时间 4:00:00 备份一次，并重�?cron 服务�?3.每分钟自动检测在线备份文件里的内�?  if [ "$SYSTEM" = 'Alpine' ]; then
+  # 鐢熸垚瀹氭椂浠诲姟: 1.姣忓ぉ鍖椾含鏃堕棿 3:30:00 鏇存柊澶囦唤鍜岃繕鍘熸枃浠讹紝2.姣忓ぉ鍖椾含鏃堕棿 4:00:00 澶囦唤涓€娆★紝骞堕噸鍚?cron 鏈嶅姟锛?3.姣忓垎閽熻嚜鍔ㄦ娴嬪湪绾垮浠芥枃浠堕噷鐨勫唴瀹?  if [ "$SYSTEM" = 'Alpine' ]; then
     [ -s $WORK_DIR/renew.sh ] && ! grep -q "${WORK_DIR}/renew.sh" /var/spool/cron/crontabs/root && echo "${IS_AUTO_RENEW}30       3       *       *       *       bash ${WORK_DIR}/renew.sh a" >> /var/spool/cron/crontabs/root
     [ -s $WORK_DIR/backup.sh ] && ! grep -q "${WORK_DIR}/backup.sh" /var/spool/cron/crontabs/root && echo "${BACKUP_TIME}       bash ${WORK_DIR}/backup.sh a" >> /var/spool/cron/crontabs/root
     [ -s $WORK_DIR/restore.sh ] && ! grep -q "${WORK_DIR}/restore.sh" /var/spool/cron/crontabs/root && echo "*       *       *       *       *       bash ${WORK_DIR}/restore.sh a" >> /var/spool/cron/crontabs/root
@@ -641,17 +641,17 @@ EOF
     service cron restart >/dev/null 2>&1
   fi
 
-  # 赋执行权�?sh 文件
+  # 璧嬫墽琛屾潈缁?sh 鏂囦欢
   chmod +x ${WORK_DIR}/*.sh
 
-  # 记录语言
+  # 璁板綍璇█
   echo "$L" > ${WORK_DIR}/language
 
-  # 运行哪吒面板
+  # 杩愯鍝悞闈㈡澘
   cmd_systemctl enable
   sleep 5
 
-  # 检测并显示结果
+  # 妫€娴嬪苟鏄剧ず缁撴灉
   if [ "$(systemctl is-active nezha-dashboard)" = 'active' ]; then
     [ -n "$ARGO_TOKEN" ] && hint "\n $(text 35) "
     warning "\n $(text 34) " && info "\n $(text 30) $(text 31)! \n"
@@ -660,7 +660,7 @@ EOF
   fi
 }
 
-# 卸载
+# 鍗歌浇
 uninstall() {
   cmd_systemctl disable
   grep -q 'REVERSE_PROXY_MODE=nginx' ${WORK_DIR}/run.sh && [ $(ps -ef | grep 'nginx' | wc -l) -le 1 ] && reading " $(text 39) " REMOVE_NGINX
@@ -675,7 +675,7 @@ uninstall() {
   info "\n $(text 29) $(text 31) "
 }
 
-# 判断当前 Argo-X 的运行状态，并对应的给菜单和动作赋�?menu_setting() {
+# 鍒ゆ柇褰撳墠 Argo-X 鐨勮繍琛岀姸鎬侊紝骞跺搴旂殑缁欒彍鍗曞拰鍔ㄤ綔璧嬪€?menu_setting() {
   OPTION[0]="0.  $(text 19)"
   ACTION[0]() { exit; }
 
@@ -700,12 +700,12 @@ uninstall() {
 menu() {
   clear
   info " $(text 1) "
-  echo -e '————————————————————�?\n'
+  echo -e '鈥斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€斺€?\n'
   for ((a=1;a<${#OPTION[*]}; a++)); do hint "\n ${OPTION[a]} "; done
   hint "\n ${OPTION[0]} "
   reading "\n $(text 24) " CHOOSE
 
-  # 输入必须是数字且少于等于最大可选项
+  # 杈撳叆蹇呴』鏄暟瀛椾笖灏戜簬绛変簬鏈€澶у彲閫夐」
   if grep -qE "^[0-9]$" <<< "$CHOOSE" && [ "$CHOOSE" -lt "${#OPTION[*]}" ]; then
     ACTION[$CHOOSE]
   else
@@ -721,3 +721,4 @@ check_arch
 check_install
 menu_setting
 menu
+

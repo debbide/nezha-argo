@@ -2,7 +2,7 @@
 
 Nezha server over Argo tunnel
 
-Documentation: English version | [中文版](https://github.com/fscarmen2/Argo-Nezha-Service-Container/blob/main/README.md)
+Documentation: English version | [涓枃鐗圿(https://github.com/fscarmen2/Argo-Nezha-Service-Container/blob/main/README.md)
 
 * * * *
 
@@ -190,7 +190,7 @@ curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -
 * Take macOS + WindTerm as an example, and other SSH tools depending on the one used, combined with the official documentation: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/use_cases/ssh /#2-connect-as-a-user
 * Official cloudflared download: https://github.com/cloudflare/cloudflared/releases
 * The following are examples of input commands.
-  SSH user: root�?SSH password�?GH_CLIENTSECRET>
+  SSH user: root锛?SSH password锛?GH_CLIENTSECRET>
 ```
 <filepath>/cloudflared access ssh --hostname ssh.seals.nom.za/<GH_CLIENTID>
 ```
@@ -282,3 +282,4 @@ tar czvf dashboard.tar.gz /dashboard
 ## Disclaimer
 * This program is only for learning and understanding, non-profit purposes, please delete within 24 hours after downloading, not for any commercial purposes, text, data and images are copyrighted, if reproduced must indicate the source.
 * Use of this program is subject to the deployment disclaimer. Use of this program must follow the deployment of the server location, the country and the user's country laws and regulations, the author of the program is not responsible for any misconduct of the user.
+
