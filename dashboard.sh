@@ -504,7 +504,8 @@ EOF
     if [[ -n "$GH_CLIENTID" && -n "$GH_CLIENTSECRET" ]]; then
       cat >> ${WORK_DIR}/data/config.yaml << EOF
 oauth2:
-   admin: ["$GH_USER"]
+   admin:
+     GitHub: ["$GH_USER"]
    GitHub:
      client_id: "$GH_CLIENTID"
      client_secret: "$GH_CLIENTSECRET"
