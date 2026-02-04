@@ -447,8 +447,8 @@ stdout_logfile=/dev/null
 command=$WORK_DIR/$ARGO_RUN
 autostart=true
 autorestart=true
-stderr_logfile=/tmp/argo.err.log
-stdout_logfile=/tmp/argo.out.log
+stderr_logfile=/dev/stderr
+stdout_logfile=/dev/stdout
 EOF
 if [ -n "$UUID" ] && [ "$UUID" != "0" ]; then
     cat >> /etc/supervisor/conf.d/damon.conf << EOF
